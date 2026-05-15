@@ -1,0 +1,5 @@
+require("options")
+require("keymaps")
+require("floating-terminal")
+require("package-installs")
+require("myplugs")
