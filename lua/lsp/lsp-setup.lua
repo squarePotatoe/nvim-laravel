@@ -1,6 +1,22 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "eslint", "stylua", "vue_ls", "ts_ls" },
+	ensure_installed = { "eslint", "stylua", "vue_ls", "ts_ls", "intelephense" },
+})
+
+require("nvim-treesitter.config").setup({
+	ensure_installed = {
+		"php",
+		"vue",
+		"javascript",
+		"typescript",
+		"html",
+		"css",
+		"json",
+		"lua",
+		"bash",
+	},
+	highlight = { enable = true },
+	indent = { enable = true },
 })
 
 vim.lsp.config("eslint", {
