@@ -16,7 +16,8 @@ vim.pack.add({
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/windwp/nvim-ts-autotag",
 	"https://github.com/nvim-lua/plenary.nvim.git",
-	"https://github.com/CopilotC-Nvim/CopilotChat.nvim",
+	-- "https://github.com/CopilotC-Nvim/CopilotChat.nvim",
+	"https://github.com/sindrets/diffview.nvim",
 })
 
 local function packadd(name)
@@ -32,7 +33,8 @@ packadd("mason-lspconfig.nvim")
 packadd("blink.cmp")
 packadd("nvim-ts-autotag")
 packadd("plenary.nvim")
-packadd("CopilotChat.nvim")
+-- packadd("CopilotChat.nvim")
+packadd("diffview.nvim")
 -----------------
 -- CONFORM added directly to .local/share/nvim/site/pack/conform/start/conform.nvim
 -- from Git repo

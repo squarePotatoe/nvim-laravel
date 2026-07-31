@@ -2,7 +2,7 @@ local cmp = require("blink.cmp")
 cmp.setup({
 	keymap = {
 		preset = "default",
-		["<CR>"] = { "accept", "fallback" },
+		["<Tab>"] = { "accept", "fallback" },
 		["<C><leader>"] = { "show" },
 	},
 	appearance = {

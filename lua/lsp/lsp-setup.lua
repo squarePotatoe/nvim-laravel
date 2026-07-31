@@ -3,6 +3,10 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "eslint", "stylua", "vue_ls", "ts_ls", "intelephense" },
 })
 
+local function on_attach(_, bufnr)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "Go to definition" })
+end
+
 require("nvim-treesitter.config").setup({
 	ensure_installed = {
 		"php",
@@ -24,7 +28,8 @@ vim.lsp.config("eslint", {
 		workingDirectories = { mode = "auto" },
 		format = false, -- Disable if using null-ls or Prettier
 	},
-	on_attach = function(_, bufnr)
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			buffer = bufnr,
 			callback = function(args)
@@ -54,9 +59,14 @@ vim.lsp.config("intelephense", {
 		intelephense = {
 			files = {
 				maxSize = 2000000,
+				associations = { "*.php", "*.phtml", "*.vue", "**vendor/**/*.php" },
+			},
+			environment = {
+				includePaths = { "./vendor" },
 			},
 		},
 	},
+	on_attach = on_attach(),
 })
 
 vim.lsp.config("vue_ls", {})
@@ -74,6 +84,7 @@ vim.lsp.config("ts_ls", {
 		},
 	},
 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+	on_attach = on_attach(),
 })
 
 vim.diagnostic.config({
